@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #reader-container {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+        }
+
+        #back{
+            background-color: rgb(8, 41, 173);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 20px;
+            border-radius: 3px;
+        }
+        a{
+            padding: 5px 10px ;
+            background-color: #0d4fe8;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <a href="./index.html"><</a>
+    <h1 id="book-title">Reading Book</h1>
+    <div id="reader-container"></div>
+
+    <script src="https://www.google.com/books/jsapi.js"></script>
+    <script>
+        // Load Google Books API
+        google.books.load();
+
+        // Get the book ID from the URL
+        const params = new URLSearchParams(window.location.search);
+        const bookId = params.get('id');
+
+        function initialize() {
+            if (!bookId) {
+                document.body.innerHTML = '<h1>Invalid Book ID</h1>';
+                return;
+            }
+
+            console.log('Initializing Google Books Viewer for Book ID:', bookId);
+
+            const viewer = new google.books.DefaultViewer(document.getElementById('reader-container'));
+            viewer.load(bookId, function(success) {
+                if (!success) {
+                    document.body.innerHTML = '<h1>Book Preview Not Available</h1>';
+                }
+            });
+        }
+
+        google.books.setOnLoadCallback(initialize);
+    </script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <title>Indra ebook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            /* padding: 20px; */
+            background-color: #f4f4f4;
+        }
+
+        .ebook-category {
+            margin-bottom: 20px;
+        }
+
+        .ebook-category button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .ebook-category button:hover {
+            background-color: #45a049;
+        }
+
+        .book-grid {
+            width: 70vw;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 columns */
+            grid-template-rows: repeat(4, 1fr);
+            /* 4 rows */
+            gap: 30px;
+            /* Space between items */
+            margin-top: 20px;
+        }
+
+        .book-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            /* Makes the entire card clickable */
+            transition: transform 0.2s ease;
+        }
+
+        .book-card:hover {
+            transform: scale(1.05);
+            /* Slight zoom on hover */
+        }
+
+        .book-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .book-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 columns on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .book-grid {
+                grid-template-columns: 1fr;
+                /* 1 column on mobile screens */
+            }
+        }
+
+
+
+
+
+        /* ------------------ */
+
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        nav {
+            background: #0082e6;
+            height: 80px;
+            width: 100%;
+        }
+
+        label.logo {
+            color: white;
+            font-size: 25px;
+            line-height: 80px;
+            padding: 0 100px;
+            font-weight: bold;
+        }
+
+
+        .logo img{
+            margin-top: 10px;
+            width: 200px;
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-size: 17px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        a.active,
+        a:hover {
+            background: #1b9bff;
+            transition: .5s;
+        }
+
+        .checkbtn {
+            font-size: 22px;
+            color: white;
+            float: right;
+            line-height: 80px;
+            margin-right: 30px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #check {
+            display: none;
+        }
+
+        @media (max-width: 1050px) {
+            label.logo {
+                padding-left: 30px;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+        }
+
+        /* Responsive media query code for small screen */
+        @media (max-width: 890px) {
+            .checkbtn {
+                display: block;
+            }
+
+            label.logo {
+                font-size: 22px;
+            }
+
+            ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #2c3e50;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+
+            nav ul li a {
+                font-size: 20px;
+            }
+
+            a:hover,
+            a.active {
+                background: none;
+                color: #0082e6;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+        }
+
+        section {
+            background: url("bg.jpg") no-repeat;
+            background-size: cover;
+            height: calc(100vh - 80px);
+        }
+
+        .cont-book{
+            width: 70vw;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <!-- Checkbox for toggling menu -->
+        <input type="checkbox" id="check">
+        <!-- Menu icon -->
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <!-- Site logo -->
+        <label class="logo"><img src="./logo1-removebg-preview.png" alt=""></label>
+        <!-- Navigation links -->
+        <ul>
+
+            <li><a class="active" href="./books.html">Сурах бичиг</a></li>
+            <li><a href="./google book/index.html">Номнууд</a></li>
+
+        </ul>
+    </nav>
+
+
+    <div class="cont-book">
+
+
+        <h1 style="margin: 10px 0;">Сурах бичиг</h1>
+
+        <div class="ebook-category">
+            <button onclick="displayBooks('10th')">10th Grade</button>
+            <button onclick="displayBooks('11th')">11th Grade</button>
+            <button onclick="displayBooks('12th')">12th Grade</button>
+        </div>
+
+        <div id="ebooks-container" class="book-grid">
+            <!-- Books will be displayed here -->
+        </div>
+
+    </div>
+
+    <script>
+        const ebooksData = [
+            {
+                class: "10th",
+                books: [
+                    { title: "Уран зохиол - 10", image: "https://dnom.mn/storage/2023/11/uran-266-0.jpg", pdf: "https://dnom.mn/storage/2023/11/10_uran_zohiol.pdf" },
+                    { title: "Физик - 10", image: "https://dnom.mn/storage/2023/11/fizik-258-0.jpg", pdf: "https://dnom.mn/storage/2023/11/10_physic.pdf" },
+                    { title: "Нийгэм судлал - 10", image: "https://dnom.mn/storage/2023/11/niis-263-0.jpg", pdf: "/ebooks/class_10/03_book.pdf" },
+                    { title: "Түүх - 10", image: "https://dnom.mn/storage/2023/11/mglhist-262-0.jpg", pdf: "/ebooks/class_10/04_book.pdf" },
+                    { title: "Монгол хэл - 10", image: "https://dnom.mn/storage/2023/11/mon-261-0.jpg", pdf: "/ebooks/class_10/05_book.pdf" },
+                    { title: "Мэдээлэлийн технологи - 10", image: "https://dnom.mn/storage/2023/11/mt-348-0.jpg", pdf: "/ebooks/class_10/06_book.pdf" },
+                    { title: "Математик", image: "https://dnom.mn/storage/2023/11/mat-279-0.jpg", pdf: "/ebooks/class_10/07_book.pdf" },
+                    { title: "Хими - 10", image: "https://dnom.mn/storage/2023/11/himi-260-0.jpg", pdf: "/ebooks/class_10/08_book.pdf" },
+                    { title: " ИРГЭНИЙ ЁС ЗҮЙН БОЛОВСРОЛ", image: "https://dnom.mn/storage/2023/11/irgeniieszvinbolovsrol-430-0.jpg", pdf: "/ebooks/class_10/09_book.pdf" },
+                    { title: "ГАЗАРЗҮЙ - 10", image: "https://dnom.mn/storage/2023/11/gazarzui-259-0.jpg", pdf: "/ebooks/class_10/10_book.pdf" },
+                    { title: "Эрүүл мэнд - 10", image: "https://dnom.mn/storage/2023/11/ermd-411-0.jpg", pdf: "/ebooks/class_10/11_book.pdf" },
+                    { title: "English - 10", image: "https://dnom.mn/storage/2023/11/english-256-0.jpg", pdf: "/ebooks/class_10/12_book.pdf" }
+                ]
+            },
+            {
+                class: "11th",
+                books: [
+                    { title: "Уран зохиол - 11", image: "https://dnom.mn/storage/2023/11/uran-278-0.jpg", pdf: "https://dnom.mn/storage/2023/11/10_uran_zohiol.pdf" },
+                    { title: "Физик - 11", image: "https://dnom.mn/storage/2023/11/fizik-269-0.jpg", pdf: "https://dnom.mn/storage/2023/11/10_physic.pdf" },
+                    { title: "Нийгэм судлал - 11", image: "https://dnom.mn/storage/2023/11/niis-350-0.jpg", pdf: "/ebooks/class_10/03_book.pdf" },
+                    { title: "Түүх - 11", image: "https://dnom.mn/storage/2023/11/11_mongoliin_tuuh.jpg", pdf: "/ebooks/class_10/04_book.pdf" },
+                    { title: "Монгол хэл - 11", image: "https://dnom.mn/storage/2023/11/mon-274-0.jpg", pdf: "/ebooks/class_10/05_book.pdf" },
+                    { title: "Мэдээлэлийн технологи - 11", image: "https://dnom.mn/storage/2023/11/mt-349-0.jpg", pdf: "/ebooks/class_10/06_book.pdf" },
+                    { title: "Математик - 11", image: "https://dnom.mn/storage/2023/11/mat-273-0.jpg", pdf: "/ebooks/class_10/07_book.pdf" },
+                    { title: "Хими - 11", image: "https://dnom.mn/storage/2023/11/himi-271-0.jpg", pdf: "/ebooks/class_10/08_book.pdf" },
+                    { title: " ИРГЭНИЙ ЁС ЗҮЙН БОЛОВСРОЛ - 11", image: "https://dnom.mn/storage/2023/11/11_irgenii_yos_zui.jpg", pdf: "/ebooks/class_10/09_book.pdf" },
+                    { title: "ГАЗАРЗҮЙ - 11", image: "https://dnom.mn/storage/2023/11/gazarzui-270-0.jpg", pdf: "/ebooks/class_10/10_book.pdf" },
+                    { title: "Эрүүл мэнд - 11", image: "https://dnom.mn/storage/2023/11/ermd-412-0.jpg", pdf: "/ebooks/class_10/11_book.pdf" },
+                    { title: "English - 11", image: "https://dnom.mn/storage/2023/11/english-268-0.jpg", pdf: "/ebooks/class_10/12_book.pdf" }
+                ]
+            },
+            {
+                class: "12th",
+                books: [
+                    { title: "Уран зохиол - 12", image: "https://dnom.mn/storage/2023/11/uran-336-0.jpg", pdf: "https://dnom.mn/storage/2023/11/10_uran_zohiol.pdf" },
+                    { title: "Монгол хэл - 12", image: "https://dnom.mn/storage/2023/11/mon-339-0.jpg", pdf: "/ebooks/class_10/05_book.pdf" },
+                    { title: " ИРГЭНИЙ ЁС ЗҮЙН БОЛОВСРОЛ - 12", image: "https://dnom.mn/storage/2023/11/irgeniieszvinbolovsrol-431-0.jpg", pdf: "/ebooks/class_10/09_book.pdf" },
+                    { title: "Мэдээлэлийн технологи - 12", image: "https://dnom.mn/storage/2023/11/mt-340-0.jpg", pdf: "/ebooks/class_10/06_book.pdf" },
+                    { title: "Математик - 12", image: "https://dnom.mn/storage/2023/11/mat-343-0.jpg", pdf: "/ebooks/class_10/07_book.pdf" },
+
+
+                    { title: "Эрүүл мэнд - 12", image: "https://dnom.mn/storage/2023/11/ermd-413-0.jpg", pdf: "/ebooks/class_10/11_book.pdf" },
+                    { title: "English - 12", image: "https://dnom.mn/storage/2023/11/english-357-0.jpg", pdf: "/ebooks/class_10/12_book.pdf" }
+                ]
+            },
+            // Add 11th and 12th class books in a similar format...
+        ];
+
+        function displayBooks(grade) {
+            const container = document.getElementById("ebooks-container");
+            container.innerHTML = '';  // Clear previous books
+
+            const selectedGradeData = ebooksData.find(item => item.class === grade);
+
+            if (selectedGradeData) {
+                selectedGradeData.books.forEach(book => {
+                    const bookCard = document.createElement("div");
+                    bookCard.classList.add("book-card");
+
+                    // Book cover image
+                    const bookImage = document.createElement("img");
+                    bookImage.src = book.image;
+                    bookImage.alt = book.title;
+
+                    // Book title
+                    const bookTitle = document.createElement("h3");
+                    bookTitle.innerText = book.title;
+
+                    // Make the entire card clickable to open the PDF
+                    bookCard.onclick = function () {
+                        window.open(book.pdf, '_blank');
+                    };
+
+                    bookCard.appendChild(bookImage);
+                    bookCard.appendChild(bookTitle);
+
+                    container.appendChild(bookCard);
+                });
+            }
+        }
+
+        // Automatically display 10th Grade books on page load
+        window.onload = function () {
+            displayBooks('10th');
+        };
+    </script>
+
+</body>
+
+</html>
